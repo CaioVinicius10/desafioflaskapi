@@ -32,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4.3.0
         with:
-          images: "${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.REPOSITORY_NAME }}:${{ steps.tag.outputs.tag }}"
+          images: ${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.REPOSITORY_NAME }}
           # tags: |
           #   type=sha,enable=true,format=short >> "$GITHUB_ENV"
 
@@ -52,5 +52,4 @@ jobs:
           flags: --allow-unauthenticated --port 5000
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
-          tags: ${{ steps.meta.outputs.tags }}
-          image: us-central1-docker.pkg.dev/gcp-lab-408213/teste/flask-api:${{ steps.tag.outputs.tag }}
+          image: IMAGE_CLOUD_RUN:main
