@@ -8,6 +8,7 @@ env:
   REPOSITORY_NAME: flask-api
   SERVICE: flask-api
   REGION: us-central1
+  GAR_NAME: teste
 
 jobs:
   build-and-push-gcp:
@@ -50,4 +51,4 @@ jobs:
         with:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
-          image: "${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.SERVICE }}:${{ github.sha }}"
+          image: "${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_NAME }}/${{ env.SERVICE }}:${{ github.sha }}"
