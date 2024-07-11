@@ -39,3 +39,5 @@ Envs que podem ser espoxtas no workflow e não é sensivel.
 link da aplicação - https://flask-api-yrowtuo5ya-uc.a.run.app/
 
 github - https://github.com/CaioVinicius10/desafioflaskapi
+
+em .rar coloquei algumas imagens pra auxiliar na doc
