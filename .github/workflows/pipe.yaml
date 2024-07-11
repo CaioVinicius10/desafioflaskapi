@@ -6,6 +6,8 @@ on:
 
 env:
   REPOSITORY_NAME: flask-api
+  SERVICE_CLOUD_RUN: flask-api
+  REGION: us-central1
 
 jobs:
   build-and-push-gcp:
@@ -41,3 +43,11 @@ jobs:
           image_name: ${{ env.REPOSITORY_NAME }}
           image_tag: ${{ steps.meta.outputs.version }}
           dockerfile: Dockerfile
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE }}
+          region: ${{ env.REGION }}
+          image: "${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.SERVICE }}:${{ github.sha }}"
