@@ -32,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4.3.0
         with:
-          images: ${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.REPOSITORY_NAME }}:${{ github.sha }}
+          images: ${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.REPOSITORY_NAME }}
           # tags: |
           #   type=sha,enable=true,format=short
 
@@ -51,4 +51,4 @@ jobs:
         with:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
-          image: us-central1-docker.pkg.dev/gcp-lab-408213/teste/flask-api:${{ github.sha }}
+          image: us-central1-docker.pkg.dev/gcp-lab-408213/teste/flask-api
