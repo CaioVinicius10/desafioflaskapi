@@ -32,9 +32,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4.3.0
         with:
-          images: ${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.REPOSITORY_NAME }}
-          tags: |
-            type=sha,enable=true,format=short >> "$GITHUB_ENV"
+          images: "${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.REPOSITORY_NAME }}:${{ github.sha }}"
+          # tags: |
+          #   type=sha,enable=true,format=short >> "$GITHUB_ENV"
 
       - name: Build image and push Google Cloud
         uses: RafikFarhad/push-to-gcr-github-action@v5-rc1
@@ -53,4 +53,4 @@ jobs:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
           tags: ${{ steps.meta.outputs.tags }}
-          image: us-central1-docker.pkg.dev/gcp-lab-408213/teste/flask-api:$GITHUB_ENV
+          image: us-central1-docker.pkg.dev/gcp-lab-408213/teste/flask-api:${{ github.sha }}
