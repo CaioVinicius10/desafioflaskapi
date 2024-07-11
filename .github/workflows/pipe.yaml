@@ -51,4 +51,4 @@ jobs:
         with:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
-          image: "${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_NAME }}/${{ env.SERVICE }}:${{ github.sha }}"
+          image: ${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_NAME }}/${{ env.SERVICE }}
