@@ -6,7 +6,6 @@ on:
 
 env:
   REPOSITORY_NAME: flask-api
-  SERVICE: flask-api2
   REGION: us-central1
 
 jobs:
@@ -48,6 +47,6 @@ jobs:
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
         with:
-          service: ${{ env.SERVICE }}
+          service: ${{ env.REPOSITORY_NAME }}
           region: ${{ env.REGION }}
-          image: "${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.SERVICE }}:${{ github.sha }}"
+          image: "${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.REPOSITORY_NAME }}:${{ github.sha }}"
