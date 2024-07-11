@@ -17,17 +17,21 @@ Arquivo .txt com o import necessario do Flask para execução da aplicação.
 
 ### Build do Dockerfile
 
-Para etapa do build utilizei essa action: RafikFarhad/push-to-gcr-github-action@v5-rc1, 
+Para etapa do build utilizei essa action: RafikFarhad/push-to-gcr-github-action@v5-rc1 
 
 ### Criação do pipe.yaml
 
-Nesse workflow utilizei apenas 1 job o build-and-push-gcp contendo o build e deploy no cloud run, o deploy no cloud run utlizei a propria action do cloud-run: google-github-actions/deploy-cloudrun@v2, e setei algumas flags necessarias para execução do projeto. Utilizei alguns repository secrets para seguir uma boa pratica de segurança e não passar informações sensiveis no workflow, GCP_KEY - Service Acconut responsavel pelo build e envio da imagem para o artifact regsitry(GCP), GCP_ARTIFACT_REGISTRY - 
+Nesse workflow utilizei apenas 1 job o build-and-push-gcp contendo o build e deploy no cloud run, o deploy no cloud run utlizei a propria action do cloud-run: google-github-actions/deploy-cloudrun@v2, e setei algumas flags necessarias para execução do projeto. Utilizei alguns repository secrets para seguir uma boa pratica de segurança e não passar informações sensiveis no workflow, GCP_KEY - Service Acconut responsavel pelo build e envio da imagem para o artifact regsitry(GCP), GCP_ARTIFACT_REGISTRY - registry onde vai ser armazenado o artefato da imagem, GCP_PROJECT_ID - ID do projeto no GCP, GCP_ARTIFACT_REPOSITORY - nome do repositorio no Artifact Registry, o REPOSITORY_NAME - nome do repositorio e IMAGE_CLOUD_RUN - que é basicamente o registry com o nome da imagem já para deployar direto no cloud run e não ficar com varias secrets/env no workflow. 
+
+No inicio do projeto utilizei algumas envs para auxiliar no processo de deploy:
+  REPOSITORY_NAME: flask-api
+  SERVICE: flask-api
+  REGION: us-central1
+Envs que podem ser espoxtas no workflow e não é sensivel.
 
 
 ### Links
 
-imagem Dockerhub - https://hub.docker.com/repository/docker/caio10/desafioreact
+link da aplicação - https://flask-api-yrowtuo5ya-uc.a.run.app/
 
-deploy heroku - https://reactjsdesafio.herokuapp.com/
-
-gitlab - https://gitlab.com/CaioVinicius10/desafioreactjs
+github - https://github.com/CaioVinicius10/desafioflaskapi
