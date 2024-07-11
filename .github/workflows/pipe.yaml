@@ -49,7 +49,7 @@ jobs:
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
         with:
-          flags: '--port 5000'
+          flags: '--port 5000','--ingress default="all"'
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
           image: us-central1-docker.pkg.dev/gcp-lab-408213/teste/flask-api:main
