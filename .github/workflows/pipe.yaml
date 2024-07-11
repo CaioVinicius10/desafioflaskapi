@@ -6,9 +6,8 @@ on:
 
 env:
   REPOSITORY_NAME: flask-api
-  SERVICE: flask-api4
+  SERVICE: flask-api
   REGION: us-central1
-  GAR_NAME: teste
 
 jobs:
   build-and-push-gcp:
@@ -33,8 +32,6 @@ jobs:
         uses: docker/metadata-action@v4.3.0
         with:
           images: ${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.REPOSITORY_NAME }}
-          # tags: |
-          #   type=sha,enable=true,format=short >> "$GITHUB_ENV"
 
       - name: Build image and push Google Cloud
         uses: RafikFarhad/push-to-gcr-github-action@v5-rc1
