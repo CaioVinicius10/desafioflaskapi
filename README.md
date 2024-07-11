@@ -1,3 +1,6 @@
+## Cloud - GCP
+Serviços utilizados Artifact Registry e Cloud RUN e IAM(para dar permissão na service account), optei pelo CR pelo fato de que era somente uma api, mas poderia ser implementado em um GKE.
+
 ## Criação e configuração do Dockerfile
 
 Inicialmente escolhi a versão da imagem python:3.9-slim para a execução do projeto.
@@ -28,6 +31,7 @@ No inicio do projeto utilizei algumas envs para auxiliar no processo de deploy:
   SERVICE: flask-api
   REGION: us-central1
 Envs que podem ser espoxtas no workflow e não é sensivel.
+
 
 
 ### Links
