@@ -5,7 +5,7 @@ on:
       - main
 
 env:
-  REPOSITORY_NAME: desafioflask
+  REPOSITORY_NAME: flask-api
 
 jobs:
   build-and-push-gcp:
@@ -31,7 +31,7 @@ jobs:
         with:
           images: ${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REPOSITORY_STG }}/${{ env.REPOSITORY_NAME }}
           tags: |
-            type=sha,enable=true,suffix=,format=short
+            type=sha,enable=true,format=short
 
       - name: Build image and push Google Cloud
         uses: RafikFarhad/push-to-gcr-github-action@v5-rc1
