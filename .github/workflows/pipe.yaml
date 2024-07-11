@@ -52,4 +52,4 @@ jobs:
           flags: --allow-unauthenticated --port 5000
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
-          image: IMAGE_CLOUD_RUN:main
+          image: ${{ secrets.IMAGE_CLOUD_RUN }}:main
