@@ -6,7 +6,7 @@ on:
 
 env:
   REPOSITORY_NAME: flask-api
-  SERVICE: flask-api2
+  SERVICE: flask-api3
   REGION: us-central1
   GAR_NAME: teste
 
